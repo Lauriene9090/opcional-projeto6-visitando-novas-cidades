@@ -1,18 +1,27 @@
-const nomeTurista = 'Olá! Qual é o seu nome?';
+let tourist = prompt("Olá turista. Qual seu nome? ");
+let visited = prompt("Você visitou alguma cidade? (s/n)");
+let citiesVisited = "";
+let cityCount = 0;
 
-const cidadesVisitadas = [];
-
-while (true) {
-    const resposta = 'Você já visitou alguma cidade? (sim/não)'.toLowerCase();
-    if (resposta === "sim") {
-        const cidade = 'Qual cidade você visitou?';
-        cidadesVisitadas.push(cidade);
-    } else if (resposta === "não") {
-        break;
+while (visited === "s" || visited === "S") {
+    let city = prompt("Qual é o nome da cidade visitada?");
+    if (cityCount === 0) {
+        citiesVisited = "- " + city;
     } else {
-        console.log("Por favor, responda com 'sim' ou 'não'.");
+        citiesVisited += "\n- " + city;
+
     }
+
+    cityCount++;
+
+    visited = prompt("Você visitou alguma outra cidade? (s/n)");
+
 }
 
-console.log(`Turista: ${nomeTurista}`);
-console.log(`Cidades visitadas: ${cidadesVisitadas.join(", ")}`);
+alert("Turista: " + tourist);
+alert("Quantidade de cidades visitadas: " + cityCount);
+
+if (cityCount > 0) {
+    alert("Cidades visitadas:\n" + citiesVisited);
+} else {
+    alert("Nenhuma cidade visitada.");
